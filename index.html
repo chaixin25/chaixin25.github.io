@@ -7,11 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>我叫柴锌</h1>
-    <p>我的学号是<span id="studentnumber">18002090101</span></p>
-    <img src="1.jpg" style="border-top-left-radius:10px;
-    border-top-right-radius:20px;
-    border-bottom-right-radius:30px;
-    border-bottom-left-radius:40px;"/>
+    <h1>我叫<span id="myname"></span></h1>
+    <p>我的学号是<span id="mynumber"></span></p>
+    <img src="1.jpg" style="border-radius:10,20,40,80"/>
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+    $(function(){
+        $.get("./cx.json",function(result){
+            $("#myname").text(result.myname);
+            $("#mynumber").text(result.mynumber);
+        });
+    })
+    </script>
 </body>
 </html>
