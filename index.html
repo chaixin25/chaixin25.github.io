@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <h1>我叫<span id="myname"></span></h1>
     <p>我的学号是<span id="mynumber"></span></p>
-    
-    <img src="1.jpg" style="border-radius:10,20,40,80"/>
+    <a id="btn" href="login.html">去登录</a>
+
+    <img src="1.jpg" style="border-radius:10,20,40,80" />
     <script src="jquery-3.4.1.js"></script>
     <script>
-    $(function(){
-        $.get("./cx.json",function(result){
-            $("#myname").text(result.myname);
-            $("#mynumber").text(result.mynumber);
-        });
-    })
+        $(function () {
+            function callback(result) {
+                $("#myname").text(result.myname);
+                $("#mynumber").text(result.mynumber);
+            }
+            // $.get("cx.json",{name:"aca",time:"46"},callback)
+            $.ajax({
+                type: "POST",
+                xhrFields: {
+                    withCredentaials: true
+                },
+                url: "http://10.30.201.71:8585/userinfo",
+                contentType: "application/json",
+                success: callback
+            });
+
+        })
+
+
     </script>
 </body>
+
 </html>
